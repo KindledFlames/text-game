@@ -22,7 +22,7 @@ print testitem.fullName()
 """
 print(testCharacter)
 print(testMonster)
-print "Bob  attacks Manster with Sword!"
+print "Bob attacks Manster with Sword!"
 testWeapon = Weapon("Sword",1,0,90,2,10,2,4,"str")
 testCharacter.addWeapon(testWeapon)
 print(testWeapon)

@@ -10,8 +10,12 @@ class Creature(object):
 		self.intelligence = intelligence
 		self.items = items
 		self.weapons = weapons
+	def checkIfDead(self):
+		if self.health<=0:
+			self.die()
 	def takeDamage(self, damage):
 		self.health -= damage
+		self.checkIfDead()
 	def healDamage(self, damageHealed):
 		self.health = min(self.maxHealth, self.health+damageHealed)
 	def __str__(self):
@@ -25,3 +29,5 @@ class Creature(object):
 			return self.intelligence
 	def addWeapon(self, weapon):
 		self.weapons.append(weapon)
+	def die(self):
+		print self.name, "is dead"
