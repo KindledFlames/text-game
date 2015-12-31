@@ -1,7 +1,7 @@
 #creature class
 
 class Creature(object):
-	def __init__(self, name, health, strength, dexterity, intelligence, items=[], weapons=[]):
+	def __init__(self, name="DEFAULT", health=4, strength=5, dexterity=5, intelligence=5, items=[], weapons=[]):
 		self.name = name
 		self.maxHealth = health
 		self.health = health
@@ -23,3 +23,5 @@ class Creature(object):
 			return self.dexterity
 		elif statName == "int":
 			return self.intelligence
+	def addWeapon(self, weapon):
+		self.weapons.append(weapon)

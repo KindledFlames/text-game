@@ -14,8 +14,8 @@ class Weapon(Item):
 		self.requiredStatType = requiredStatType
 	def attack(self, usedBy, usedOn):
 		damageMultiplier = 1
-		statDifference = usedBy.getStat(requiredStatType) - requiredStatAmount
-		if (random.randint(1,100)+min(5, statDifference)<=accuracy):
-			if (random.randint(1,100)+min(5, statDifference):
+		statDifference = usedBy.getStat(self.requiredStatType) - self.requiredStatAmount
+		if (random.randint(1,100)+min(5, statDifference)<=self.accuracy):
+			if (random.randint(1,100)+min(5, statDifference)<=self.critRate):
 				damageMultiplier = self.critMultiplier
 			usedOn.takeDamage(int(self.damage+min(5, statDifference)))
