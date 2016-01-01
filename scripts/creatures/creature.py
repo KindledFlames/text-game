@@ -1,7 +1,7 @@
 #creature class
 
 class Creature(object):
-	def __init__(self, name="DEFAULT", health=4, strength=5, dexterity=5, intelligence=5, items=[], weapons=[]):
+	def __init__(self, name="DEFAULT", health=4, strength=5, dexterity=5, intelligence=5, items=[], weapons=[], room=None):
 		self.name = name
 		self.maxHealth = health
 		self.health = health
@@ -10,6 +10,7 @@ class Creature(object):
 		self.intelligence = intelligence
 		self.items = items
 		self.weapons = weapons
+		self.room = room
 	def checkIfDead(self):
 		if self.health<=0:
 			self.die()
@@ -31,3 +32,5 @@ class Creature(object):
 		self.weapons.append(weapon)
 	def die(self):
 		print self.name, "is dead"
+	def moveTo(self, newRoom):
+		self.room = newRoom
