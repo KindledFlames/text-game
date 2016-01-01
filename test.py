@@ -1,4 +1,4 @@
-#test file to test character class
+#test file to test stuff
 
 from scripts.creatures.creature import *
 from scripts.creatures.character import *

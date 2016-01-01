@@ -11,7 +11,8 @@ class Creature(object):
 		self.items = items
 		self.weapons = weapons
 	def checkIfDead(self):
-		if self.health<=0:
+		if self.health <= 0:
+			self.health = 0
 			self.die()
 	def takeDamage(self, damage):
 		self.health -= damage
