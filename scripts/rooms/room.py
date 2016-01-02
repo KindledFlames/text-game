@@ -19,6 +19,7 @@ class Room(object):
             creature.room.removeCreature(creature) #remove creature from it's old room
         self.creatures.append(creature)
         creature.room = self
+        world.changeRoom(creature, self)
     def removeCreature(self, creature):
         try:
             self.creatures.remove(creature)

@@ -10,7 +10,7 @@ from item import *
 import random
 
 class Weapon(Item):
-	def __init__(self, name, weight, number, accuracy, damage, critRate, critMultiplier, requiredStatAmount, requiredStatType):
+	def __init__(self, name, weight, number, accuracy, damage, critRate, critMultiplier, requiredStatAmount, requiredStatType, world):
 		super(Weapon, self).__init__(name, weight, number)
 		self.accuracy = accuracy #percent accuracy
 		self.damage = damage #number of damage points the weapon does
@@ -18,6 +18,7 @@ class Weapon(Item):
 		self.critMultiplier = critMultiplier #amount by which damage is multiplied when a critical has been got
 		self.requiredStatAmount = requiredStatAmount #amount of required stat the creature must have for the weapon to perform normally
 		self.requiredStatType = requiredStatType #the stat required for the creature to use the weapon
+		self.world = world
 	def attack(self, usedBy, usedOn):
 		damageMultiplier = 1 #amount by which the damage is multiplied. 1 unless a critical hit happens
 		statDifference = usedBy.getStat(self.requiredStatType) - self.requiredStatAmount #the amount by which the character's stat exceeds the weapon's required stat
@@ -25,6 +26,7 @@ class Weapon(Item):
 			if (random.randint(1,100)+min(5, statDifference)<=self.critRate): #roll to crit
 				damageMultiplier = self.critMultiplier
 			damageToDeal = int(damageMultiplier * max(self.damage+min(5, statDifference),0))
-			usedOn.takeDamage(damageToDeal) 
+			usedOn.takeDamage(damageToDeal)
+		world.attack(usedBy,usedOn,self,damageToDeal)
 
 
