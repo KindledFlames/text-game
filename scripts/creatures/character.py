@@ -1,4 +1,7 @@
 #class for character for text-based game
+#the character class is used for the player-controlled character
+#wheras the creature class can be used to refer to both player-controlled
+#and non-player characters
 
 from creature import *
 
