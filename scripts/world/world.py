@@ -1,7 +1,7 @@
 #world class
 
 class World(object):
-    def __init__(self, rooms, creatures, character, ui):
+    def __init__(self, rooms=[], creatures=[], character=[], ui=None):
         self.rooms = rooms #dict of rooms
         self.creatures = creatures
         self.character = character

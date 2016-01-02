@@ -6,13 +6,14 @@
 from creature import *
 
 class Character(Creature):
-	def __init__(self, level=1, experience=0, pName, pHealth, pStrength):
+	def __init__(self, pName, pHealth, pStrength, dexterity=5, intelligence=5, items=[], weapons=[], room=None, level=1, experience=0):
 		self.level = level
 		self.experience = experience
 		super(Character, self).__init__(pName, pHealth, pStrength)
 	def moveTo(self, newRoom): #override from Creature
-		self.room.playerExits()
-		self.room = newRoom
+		if None!=self.room:
+			self.room.playerExits()
+		newRoom.addCreature(self)
 		self.room.playerEnters()
 	def addExperience(self, exp): #add experience points
 		self.experience += exp

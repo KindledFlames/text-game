@@ -5,28 +5,24 @@ from scripts.creatures.character import *
 from scripts.items.item import *
 from scripts.items.weapon import *
 from scripts.rooms.room import *
+from scripts.world.world import *
+from scripts.user_interface.ui import *
 
-testCharacter = Character("Bob", 4, 5)
-testMonster = Creature("Manster", 3, 3)
-testRoom1 = Room([testCharacter, testMonster], 1, True)
-testRoom2 = Room([], 2)
-"""
-print "Health:", testcharacter.health
-print "Strength:", testcharacter.strength
-print "-2 hp"
-testcharacter.takeDamage(2)
-print "Health:", testcharacter.health
-print "+3 hp"
+world = World()
+ui = UserInterface(world)
+world.ui = ui
 
-testitem = Item('Rock', 3)
-print str(testitem)
-print testitem.fullName()
-"""
-print "Character\n", testCharacter, "\n"
-print "Monster\n", testMonster, "\n"
-print "Bob attacks Manster with Sword!"
-testWeapon = Weapon("Sword",1,0,90,2,10,2,4,"str")
-testCharacter.addWeapon(testWeapon)
-print(testWeapon)
-testWeapon.attack(testCharacter, testMonster)
-print(testMonster)
+room1 = Room(1, world=world)
+room2 = Room(2, world=world)
+room1.connectingRooms = [room1]
+room2.connectingRooms = [room2]
+
+player = Character("TEST PLAYER",5,4,4,4,[],[],None,1,0)
+monster = Creature("TEST MANSTER",3,3,3,3,[],[],None)
+player.moveTo(room1)
+monster.moveTo(room2)
+
+weapon = Weapon("TEST WEAPON", 0, 0, 90, 2, 5, 2, 3, "str", world)
+player.addWeapon(weapon)
+player.moveTo(room2)
+weapon.attack(player, monster)

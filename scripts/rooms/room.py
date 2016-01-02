@@ -5,7 +5,7 @@
 #objects, items, etc that are in the same room they are in
 
 class Room(object):
-    def __init__(self, creatures, number, hasPlayer=False, connectingRooms, world):
+    def __init__(self, number, creatures=[], hasPlayer=False, connectingRooms=[], world=None):
         #Question: should rooms have names?
         self.creatures = creatures #list of creatures in the room
         for creature in creatures: #set all creatures' room's to this room
@@ -19,7 +19,7 @@ class Room(object):
             creature.room.removeCreature(creature) #remove creature from it's old room
         self.creatures.append(creature)
         creature.room = self
-        world.changeRoom(creature, self)
+        self.world.changeRoom(creature, self)
     def removeCreature(self, creature):
         try:
             self.creatures.remove(creature)

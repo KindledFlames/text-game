@@ -27,6 +27,6 @@ class Weapon(Item):
 				damageMultiplier = self.critMultiplier
 			damageToDeal = int(damageMultiplier * max(self.damage+min(5, statDifference),0))
 			usedOn.takeDamage(damageToDeal)
-		world.attack(usedBy,usedOn,self,damageToDeal)
+		self.world.attack(usedBy,usedOn,self,damageToDeal)
 
 
