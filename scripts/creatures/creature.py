@@ -23,7 +23,7 @@ class Creature(object):
 	def healDamage(self, damageHealed): #heals creature by the given amount. Creatures can only heal up to max health
 		self.health = min(self.maxHealth, self.health+damageHealed)
 	def __str__(self): #overrides the str method for the Creature class
-		return self.name+"\nHealth: "+ str(self.health)+"\nStrength: "+ str(self.strength)
+		return self.name+"\nHealth: "+ str(self.health)+"\nStrength: "+ str(self.strength) + "\nDexterity" + str(self.dexterity) + "\nIntelligence" + str(self.intelligence)
 	def getStat(self, statName): #gets the "str", "dex", or "int" stat
 		if statName == "str":
 			return self.strength
