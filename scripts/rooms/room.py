@@ -15,9 +15,16 @@ class Room(object):
         self.connectingRooms = connectingRooms
         self.world = world
     def addCreature(self, creature): #add creature to room
+        if None!=creature.room:
+            creature.room.removeCreature(creature) #remove creature from it's old room
         self.creatures.append(creature)
-        #to-do set the creature's room to this room
-        #to-do remove creature from it's previous room
+        creature.room = self
+    def removeCreature(self, creature):
+        try:
+            self.creatures.remove(creature)
+            return True #return true if the creature was in the room and has now been removed
+        except ValueError:
+            return False #return false if the creature wasn't in the room
     def playerEnters(self):
         self.hasPlayer = True
     def playerExits(self):

@@ -36,4 +36,4 @@ class Creature(object):
 	def die(self): #kills the character
 		print self.name, "is dead"
 	def moveTo(self, newRoom): #set the creatures room to the given room
-		self.room = newRoom
+		newRoom.addCreature(self)
