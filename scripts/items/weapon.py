@@ -23,6 +23,8 @@ class Weapon(Item):
 		statDifference = usedBy.getStat(self.requiredStatType) - self.requiredStatAmount #the amount by which the character's stat exceeds the weapon's required stat
 		if (random.randint(1,100)+min(5, statDifference)<=self.accuracy): #roll to hit
 			if (random.randint(1,100)+min(5, statDifference)<=self.critRate): #roll to crit
-				damageMultiplier = self.critMultiplier 
-			usedOn.takeDamage(int(self.damage+min(5, statDifference))) #to-do change that weapons cannot do negative damage
-	#to-do define a details method which returns the weapon's stats in string form
+				damageMultiplier = self.critMultiplier
+			damageToDeal = int(damageMultiplier * max(self.damage+min(5, statDifference),0))
+			usedOn.takeDamage(damageToDeal) 
+
+
