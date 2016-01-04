@@ -16,6 +16,9 @@ class Creature(object):
 		self.room = room
 	def checkIfDead(self): #method to check if creature is dead and to kill character if they are dead
 		if self.health<=0:
+	def checkIfDead(self):
+		if self.health <= 0:
+			self.health = 0
 			self.die()
 	def takeDamage(self, damage): #reduces the creature's health by a given amount and checks if dead
 		self.health -= damage
